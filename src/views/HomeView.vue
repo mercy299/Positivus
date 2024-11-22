@@ -4,6 +4,7 @@ import HomeLogos from '../components/Home/HomeLogos.vue'
 import HomeServices from '../components/Home/HomeServices.vue'
 import HomeHappen from '../components/Home/HomeHappen.vue'
 import HomeCaseStudies from '@/components/Home/HomeCaseStudies.vue'
+import HomeWorkingProcess from '@/components/Home/HomeWorkingProcess.vue'
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import HomeCaseStudies from '@/components/Home/HomeCaseStudies.vue'
     <HomeServices />
     <HomeHappen />
     <HomeCaseStudies />
+    <HomeWorkingProcess />
   </main>
 </template>
 
