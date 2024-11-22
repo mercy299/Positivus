@@ -1,7 +1,12 @@
+import DefaultLayout from '@/components/Layouts/DefaultLayout.vue'
 import HomeView from '../views/HomeView.vue'
 
 const router = [
-    {
+  {
+    path: '/',
+    component: DefaultLayout,
+    children: [
+      {
         path: '/',
         name: 'home',
         component: HomeView,
@@ -14,6 +19,12 @@ const router = [
         // which is lazy-loaded when the route is visited.
         component: () => import('../views/AboutView.vue'),
       },
+    ],
+  },
+  {
+    path: '/auth',
+    component: () => import('@/components/Layouts/AuthLayout.vue'),
+  },
 ]
 
 export default router

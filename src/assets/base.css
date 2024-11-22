@@ -1,3 +1,8 @@
+:root {
+  --max-content-width: 1250px;
+  --font-family: 'Space Grotesk', sans-serif;
+}
+
 body,
 html {
   margin: 0px !important;
