@@ -3,10 +3,7 @@
     <div class="content">
       <div class="services-text">
         <h1>Our Working Process</h1>
-        <p>
-          At our digital marketing agency, we offer a wide range of services to <br />
-          help your business grow and succeed online. These services include:
-        </p>
+        <p>Step-by-Step Guide to Achieving <br />Your Buisness Goals</p>
       </div>
       <div class="working-process-flex">
         <div class="working-process-flex-item">
@@ -55,7 +52,7 @@
           <div class="working-process-flex-item-header">
             <div class="working-process-flex-item-header-text">
               <h2>05</h2>
-              <h3>Reporting And Analaysis</h3>
+              <h3>Reporting And Communication</h3>
             </div>
             <img src="../../assets/PlusIcon.svg" alt="Working Process" />
           </div>
@@ -64,7 +61,7 @@
           <div class="working-process-flex-item-header">
             <div class="working-process-flex-item-header-text">
               <h2>06</h2>
-              <h3>Report And Communication</h3>
+              <h3>Continual Improvement</h3>
             </div>
             <img src="../../assets/PlusIcon.svg" alt="Working Process" />
           </div>
