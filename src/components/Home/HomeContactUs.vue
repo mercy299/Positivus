@@ -25,7 +25,7 @@
             <textarea v-model="message" placeholder="add multiple lines"></textarea>
           </div>
           <div class="button-wrapper">
-            <button>Subscribe to news</button>
+            <button>Send message</button>
           </div>
         </form>
         <img src="../../assets/contact-form-img.svg" alt="contact us image" />
@@ -102,7 +102,7 @@ form {
 button {
   border: 1px solid black;
   text-align: center;
-  padding: 16px 36px;
+  padding: 16px 153px;
   margin: 0%;
   border-radius: 10px;
   background-color: #191a23;

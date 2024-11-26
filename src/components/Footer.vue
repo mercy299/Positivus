@@ -53,13 +53,13 @@
   margin: auto;
   background-color: #191a23;
   font-family: var(--font-family);
-  border-radius: 20px 20px 0px 0px;
+  border-radius: 30px 30px 0px 0px;
 }
 .footer-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em;
+  padding: 2em 3em;
   color: white;
 }
 .footer-header-links {
@@ -74,7 +74,7 @@
 .footer-contact {
   /* display: flex; */
   /* gap: 30px; */
-  padding: 2em;
+  padding: 2em 3em;
   /* align-items: center; */
   /* flex-direction: column; */
 }
@@ -127,7 +127,7 @@ button {
 .footer-copyright {
   display: flex;
   gap: 2em;
-  padding: 0em 2em;
+  padding: 0em 3em;
   color: white;
 }
 .footer-copyright p:nth-child(2) {
