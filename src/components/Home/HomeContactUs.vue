@@ -24,6 +24,9 @@
             <label for="message">Message</label>
             <textarea v-model="message" placeholder="add multiple lines"></textarea>
           </div>
+          <div class="button-wrapper">
+            <button>Subscribe to news</button>
+          </div>
         </form>
         <img src="../../assets/contact-form-img.svg" alt="contact us image" />
       </div>
@@ -77,6 +80,7 @@ const email = ref('')
 .form-inputs {
   display: flex;
   flex-direction: column;
+  padding-bottom: 2em;
 }
 .form-inputs label {
   font-size: 15px;
@@ -94,5 +98,15 @@ const email = ref('')
 }
 form {
   padding: 3em 0em 0em 5em;
+}
+button {
+  border: 1px solid black;
+  text-align: center;
+  padding: 16px 36px;
+  margin: 0%;
+  border-radius: 10px;
+  background-color: #191a23;
+  color: white;
+  font-family: var(--font-family);
 }
 </style>

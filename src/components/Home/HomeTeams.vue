@@ -13,7 +13,7 @@
               <span>John Smith</span>
               <span>Ceo And Founder</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
@@ -27,7 +27,7 @@
               <span>Jane Doe</span>
               <span>Director of Operations</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
@@ -42,7 +42,7 @@
               <span>Michaael Brown</span>
               <span>Senior SEO Specialist</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
@@ -57,7 +57,7 @@
               <span>Emily Johnson</span>
               <span>PPC Manager</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
@@ -72,7 +72,7 @@
               <span>Brian Williams</span>
               <span>Social Media Specialist</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
@@ -87,7 +87,7 @@
               <span>John Smith</span>
               <span>Content Creator</span>
             </div>
-            <img src="../../assets/Positivus Social Icon.svg" alt="linkedinIcon" height="34px" />
+            <img src="../../assets/linkedin.svg" alt="linkedinIcon" height="34px" />
           </div>
           <hr />
           <p>
