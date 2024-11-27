@@ -8,11 +8,34 @@
           to Learn More about Our Digital Marketing Services
         </p>
       </div>
+      <div class="carousel-wrapper">
+        <Carousel :slides="slides" />
+      </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Carousel from '../Default/carousel.vue'
+
+const slides = [
+  {
+    id: 1,
+    content:
+      'During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
+  },
+  {
+    id: 2,
+    content:
+      'Their strategies have been transformative! We’ve seen tremendous growth in our online presence and engagement thanks to their expertise in digital marketing.',
+  },
+  {
+    id: 3,
+    content:
+      'Excellent service! Their team is responsive, knowledgeable, and genuinely cares about delivering results that matter.',
+  },
+]
+</script>
 
 <style scoped>
 .content {
