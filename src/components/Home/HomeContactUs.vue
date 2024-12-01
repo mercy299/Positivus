@@ -8,11 +8,15 @@
       <div class="contact-us-form">
         <form>
           <div class="radio-buttons">
-            <input type="radio" id="one" value="One" v-model="picked" />
-            <label for="one">Say Hi</label>
+            <div class="radio-wrapper">
+              <input type="radio" id="one" value="One" v-model="picked" checked />
+              <label for="one">Say Hi</label>
+            </div>
 
-            <input type="radio" id="two" value="Two" v-model="picked" />
-            <label for="two">Get a Quote</label>
+            <div class="radio-wrapper">
+              <input type="radio" id="two" value="Two" v-model="picked" />
+              <label for="two">Get a Quote</label>
+            </div>
           </div>
           <div class="form-inputs">
             <div class="form-group">
@@ -79,9 +83,46 @@ const email = ref('')
 }
 .radio-buttons {
   display: flex;
-  gap: 10px;
+  gap: 20px;
   padding-bottom: 2em;
   padding-top: 0;
+  /* margin: 0.5rem; */
+}
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.radio-buttons input[type='radio'] {
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #666;
+  border-radius: 50%;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+}
+.radio-buttons input[type='radio']:checked {
+  background-color: #b9ff66;
+  border-color: #b9ff66;
+}
+
+.radio-buttons input[type='radio']:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio-buttons label {
+  font-size: 16px;
+  cursor: pointer;
 }
 .form-group {
   flex-direction: column;
