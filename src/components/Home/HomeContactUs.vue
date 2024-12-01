@@ -15,14 +15,20 @@
             <label for="two">Get a Quote</label>
           </div>
           <div class="form-inputs">
-            <label for="name">Name</label>
-            <input v-model="name" placeholder="edit me" />
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input v-model="name" placeholder="Name" />
+            </div>
 
-            <label for="email">Email</label>
-            <input v-model="email" placeholder="edit me" />
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input v-model="email" placeholder="Email" />
+            </div>
 
-            <label for="message">Message</label>
-            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+            <div class="form-group">
+              <label for="message">Message*</label>
+              <textarea v-model="message" placeholder="Message"></textarea>
+            </div>
           </div>
           <div class="button-wrapper">
             <button>Send message</button>
@@ -67,7 +73,7 @@ const email = ref('')
 }
 .contact-us-form {
   display: flex;
-  gap: 25em;
+  gap: 24em;
   background-color: #f3f3f3;
   border-radius: 30px;
 }
@@ -77,24 +83,36 @@ const email = ref('')
   padding-bottom: 2em;
   padding-top: 0;
 }
+.form-group {
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+}
 .form-inputs {
   display: flex;
   flex-direction: column;
   padding-bottom: 2em;
+  gap: 25px;
+  font-size: 16px;
 }
 .form-inputs label {
-  font-size: 15px;
-  padding-top: 1em;
+  font-size: 16px;
+  /* padding-top: 1em; */
 }
 .form-inputs textarea {
-  height: 15em;
-  width: 30em;
+  height: 190px;
+  width: 100%;
   border-radius: 10px;
+  padding-top: 20px;
+  font-size: 18px;
 }
 .form-inputs input {
-  width: 30em;
-  height: 3em;
-  border-radius: 5px;
+  width: 100%;
+  height: 59px;
+  border-radius: 14px;
+  border: 1px solid black;
+  font-size: 18px;
+  /* font-weight: 100; */
 }
 form {
   padding: 3em 0em 0em 5em;
@@ -108,5 +126,9 @@ button {
   background-color: #191a23;
   color: white;
   font-family: var(--font-family);
+}
+.form-inputs input,
+textarea {
+  padding-left: 30px;
 }
 </style>

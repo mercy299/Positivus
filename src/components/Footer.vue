@@ -95,14 +95,15 @@
 }
 .footer-contact-form-container {
   display: flex;
-  gap: 30px;
+  gap: 60px;
   padding-bottom: 2em;
 }
 .footer-form input {
   padding: 1em;
   border-radius: 10px;
   background-color: #292a32;
-  border: 1px solid white;
+  border: 1px solid black;
+  width: 250px;
 }
 .footer-form input::placeholder {
   color: white;
@@ -111,8 +112,10 @@
   display: flex;
   background-color: #292a32;
   align-items: center;
-  padding: 1em;
+  padding: 2em;
   gap: 1em;
+  border-radius: 10px;
+  margin-bottom: 1em;
 }
 button {
   border: 1px solid black;
@@ -126,8 +129,8 @@ button {
 }
 .footer-copyright {
   display: flex;
-  gap: 2em;
-  padding: 0em 3em;
+  gap: 3em;
+  padding: 0em 3em 2em 3em;
   color: white;
 }
 .footer-copyright p:nth-child(2) {

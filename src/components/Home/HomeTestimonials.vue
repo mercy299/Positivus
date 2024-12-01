@@ -9,30 +9,46 @@
         </p>
       </div>
       <div class="carousel-wrapper">
-        <Carousel :slides="slides" />
+        <RecyclingCarousel :items="testimonials">
+          <template #default="{ item, index }">
+            <Callouts
+              :remark="item.text"
+              :index="index"
+              :author="item.author"
+              :designation="item.designation"
+            />
+          </template>
+        </RecyclingCarousel>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Carousel from '../Default/carousel.vue'
+import Callouts from '../Default/Callouts.vue'
+import RecyclingCarousel from '../Default/RecyclingCarousel.vue'
 
-const slides = [
+interface Testimonial {
+  text: string
+  author: string
+  designation: string
+}
+
+const testimonials: Testimonial[] = [
   {
-    id: 1,
-    content:
-      '"We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence."',
+    text: 'We have been working with Positivus for the past year and have seen a significant increase in website traffic and leads as a result of their efforts. The team is professional, responsive, and truly cares about the success of our business. We highly recommend Positivus to any company looking to grow their online presence.',
+    author: 'John Smith',
+    designation: 'Marketing Director at XYZ Corp',
   },
   {
-    id: 2,
-    content:
-      'During the initial consultation, we will discuss your buisness goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.',
+    text: 'Positivus has helped us boost our online visibility significantly. Their approach to digital marketing is comprehensive, and their team is always ready to address our concerns.',
+    author: 'Jane Doe',
+    designation: 'CEO at ABC Ltd',
   },
   {
-    id: 3,
-    content:
-      'Contact us today to learn more about how our digitalmarketing services can help you grow your buisness and succeed online.',
+    text: 'Thanks to Positivus, our sales have increased dramatically. Their expertise in SEO and content marketing is unparalleled.',
+    author: 'Michael Lee',
+    designation: 'CTO at 123 Enterprises',
   },
 ]
 </script>
@@ -63,5 +79,11 @@ const slides = [
 .services-text p {
   font-size: 18px;
   color: #333;
+}
+
+.carousel-wrapper {
+  padding: 5em 0;
+  background-color: #191a23;
+  border-radius: 20px;
 }
 </style>
