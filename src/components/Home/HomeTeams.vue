@@ -171,7 +171,7 @@ button {
   padding: 2em 0;
 }
 
-@media only screen and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 768px) {
   .content {
     max-width: 767px;
   }

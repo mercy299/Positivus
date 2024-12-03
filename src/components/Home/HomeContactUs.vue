@@ -192,7 +192,7 @@ button {
   color: white;
   font-family: var(--font-family);
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 788px) {
   .content {
     max-width: 767px;
     font-family: var(--font-family);
@@ -214,10 +214,9 @@ button {
     display: flex;
     /* gap: 20em; */
     background-color: #f3f3f3;
+    background-image: none;
     border-radius: 20px;
-  }
-  .contact-us-form img {
-    display: none;
+    justify-content: center;
   }
   .button-wrapper {
     display: none;
@@ -251,6 +250,9 @@ button {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+  }
+  .form-inputs {
+    width: 500px;
   }
 }
 </style>

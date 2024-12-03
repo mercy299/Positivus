@@ -144,7 +144,7 @@ button {
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 768px) {
   .footer-container {
     background-color: #191a23;
     font-family: var(--font-family);
@@ -236,10 +236,14 @@ button {
   }
 }
 @media (min-width: 768px) and (max-width: 980px) {
-  .footer-form {
-    display: none;
+  .footer-contact-form-container {
+    display: flex;
+    flex-direction: column;
   }
-  .footer-header-links {
+  .footer-form {
+    justify-content: center;
+  }
+  .footer-header-social-media {
     display: none;
   }
   .footer-container {

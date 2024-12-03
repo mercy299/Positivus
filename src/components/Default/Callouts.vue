@@ -80,4 +80,9 @@ defineProps({
   margin-left: 14%;
   font-size: 20px;
 }
+@media (min-width: 300px) and (max-width: 686px) {
+  .callout {
+    width: 500px;
+  }
+}
 </style>

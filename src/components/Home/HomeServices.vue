@@ -290,7 +290,7 @@
     text-align: center;
   }
 }
-@media (min-width: 400px) and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 768px) {
   .services-cards {
     grid-template-columns: 1fr;
     width: 100%;
@@ -302,11 +302,17 @@
   .card5,
   .card6 {
     margin: auto;
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
   }
   .card-img {
     display: none;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
   }
 }
 </style>

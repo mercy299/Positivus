@@ -15,7 +15,12 @@
           <br />services including SEO, PPC, social media marketing,<br />
           and content creation.
         </p>
-        <button><RouterLink to="/contact"> Book a consultation</RouterLink></button>
+        <button class="big-screen-btn">
+          <RouterLink to="/contact"> Book a consultation</RouterLink>
+        </button>
+        <div class="button-wrapper-small-screen">
+          <button>Book a consultation</button>
+        </div>
       </div>
       <div class="hero-image">
         <img src="../../assets/hero-img.svg" alt="hero-image" />
@@ -47,6 +52,9 @@
   font-weight: 200;
   padding: 0 0px 20px 0px;
 }
+.button-wrapper-small-screen {
+  display: none;
+}
 button {
   border: 1px solid black;
   text-align: center;
@@ -67,30 +75,52 @@ button a {
   display: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 768px) {
   .hero-wrapper {
     padding: 0 2em;
+    margin: auto;
   }
   .hero-container {
     font-family: var(--font-family);
     display: flex;
     flex-direction: column-reverse;
-    justify-content: space-between;
-    max-width: var(--max-content-width);
-    margin: auto;
+    /* justify-content: space-between; */
+    /* max-width: var(--max-content-width); */
+    /* margin: auto; */
   }
   .hero-image {
     display: none;
   }
   .hero-image-small-screen {
     display: flex;
+    justify-content: center;
+  }
+
+  .hero-image-small-screen img {
+    width: 350px;
+    justify-content: center;
   }
   .hero-text {
     align-items: center;
     /* text-align: center; */
   }
-  .hero-text h1 {
+  .hero-text h1,
+  p {
     text-align: center;
+  }
+  .button-wrapper-small-screen {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  .button-wrapper-small-screen button {
+    border-radius: 14px;
+    color: white;
+    width: 250px;
+  }
+  .big-screen-btn {
+    display: none;
   }
 }
 @media (min-width: 768px) and (max-width: 830px) {
@@ -123,9 +153,16 @@ button a {
     justify-content: center;
   } */
 }
-@media (min-width: 820px) and (max-width: 1035px) {
+@media (min-width: 830px) and (max-width: 1035px) {
   .hero-image img {
     width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 913px) {
+  .hero-image img {
+    width: 35 0px;
     display: flex;
     justify-content: center;
   }

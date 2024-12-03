@@ -83,7 +83,15 @@ const workingProcesses = [
   gap: 2em;
 }
 
-@media (min-width: 758px) and (max-width: 1200px) {
+@media (min-width: 558px) and (max-width: 1200px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
+@media (min-width: 300px) and (max-width: 558px) {
   .services-text {
     display: flex;
     flex-direction: column;

@@ -5,7 +5,7 @@
         <h2>0{{ index + 1 }}</h2>
         <h3>{{ title }}</h3>
       </div>
-      <div style="cursor: pointer" @click="toggleActive">
+      <div style="cursor: pointer" @click="toggleActive" class="plus-minus">
         <img src="../../assets/MinusIcon.svg" alt="Working Process" v-if="isActive" />
         <img src="../../assets/PlusIcon.svg" alt="Working Process" v-else />
       </div>
@@ -72,5 +72,19 @@ h2 {
 h3 {
   font-size: 30px;
   font-weight: 450;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  h3 {
+    font-size: 20px;
+    font-weight: 250;
+  }
+  h2 {
+    font-size: 30px;
+    font-weight: 350;
+  }
+  .plus-minus img {
+    width: 30px;
+  }
 }
 </style>

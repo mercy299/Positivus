@@ -46,7 +46,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    background-color: aqua;
   }
 }
 </style>
