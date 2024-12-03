@@ -170,4 +170,56 @@ button {
   justify-content: flex-end;
   padding: 2em 0;
 }
+
+@media only screen and (max-width: 768px) {
+  .content {
+    max-width: 767px;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .teams-flex {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+  }
+  .teams-flex-item {
+    margin: auto;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .teams-flex {
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    /* justify-content: center;  */
+    /* align-items: center; */
+    height: 100vh;
+  }
+
+  .teams-flex-item {
+    margin: auto;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+  }
+}
 </style>

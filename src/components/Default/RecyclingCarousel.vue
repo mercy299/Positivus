@@ -83,7 +83,6 @@ const scrollToItem = (index: number) => {
 
   if (container && target) {
     // Calculate the scroll offset
-    console.log(target.offsetParent)
     const containerWidth = container.offsetWidth
     const targetWidth = target.offsetWidth
     const targetLeft = target.offsetLeft

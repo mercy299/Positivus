@@ -86,4 +86,23 @@ const testimonials: Testimonial[] = [
   background-color: #191a23;
   border-radius: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .services-text p {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+}
 </style>

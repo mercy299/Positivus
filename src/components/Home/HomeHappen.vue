@@ -20,7 +20,8 @@
 
 <style scoped>
 .happen-wrapper {
-  padding: 4em 0;
+  margin: 40px 0px;
+  padding: 0 20px;
 }
 .content {
   display: flex;
@@ -47,5 +48,17 @@ button {
   background-color: #191a23;
   color: white;
   font-family: var(--font-family);
+}
+@media (min-width: 400px) and (max-width: 880px) {
+  .content-img {
+    display: none;
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+  }
+  .happen-wrapper {
+    padding: 0 20px;
+  }
 }
 </style>

@@ -26,4 +26,27 @@
 .content img {
   filter: grayscale(100%);
 }
+
+@media only screen and (max-width: 768px) {
+  .home-logos__wrapper {
+    margin-top: 20px;
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: auto;
+  }
+}
+@media (min-width: 500px) and (max-width: 915px) {
+  .home-logos__wrapper {
+    margin-top: 20px;
+  }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: aqua;
+  }
+}
 </style>

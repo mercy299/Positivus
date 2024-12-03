@@ -58,6 +58,7 @@ const workingProcesses = [
   max-width: var(--max-content-width);
   font-family: var(--font-family);
   margin: auto;
+  padding: 0 20px;
 }
 .services-text {
   display: flex;
@@ -80,5 +81,14 @@ const workingProcesses = [
   display: flex;
   flex-direction: column;
   gap: 2em;
+}
+
+@media (min-width: 758px) and (max-width: 1200px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
 </style>

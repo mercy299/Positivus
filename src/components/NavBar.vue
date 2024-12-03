@@ -69,4 +69,22 @@ button {
   border-radius: 10px;
   background-color: transparent;
 }
+
+@media (min-width: 100px) and (max-width: 826px) {
+  .navbar-container {
+    max-width: 767px;
+  }
+  .navbar-list {
+    display: none;
+  }
+  button {
+    border: 1px solid #40833a;
+    text-align: center;
+    /* padding: 5px 26px; */
+    margin: 0%;
+    border-radius: 10px;
+    background-color: transparent;
+    height: 50px;
+  }
+}
 </style>

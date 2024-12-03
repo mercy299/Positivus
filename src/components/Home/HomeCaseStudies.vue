@@ -40,6 +40,16 @@
           </div>
         </div>
       </div>
+      <div class="card-text-small-screen">
+        <p>
+          For a local resturant, we implemented a targeted PPC campaign that resulted in a 50%
+          increase in website trackings and 20% increase in sales.
+        </p>
+        <div class="learn-more">
+          <p>Learn More</p>
+          <img src="../../assets/learn-more-icon.svg" alt="Learn More" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -51,6 +61,7 @@
   max-width: var(--max-content-width);
   font-family: var(--font-family);
   margin: auto;
+  padding: 0 20px;
 }
 .services-text {
   display: flex;
@@ -76,6 +87,9 @@
   padding: 3em 2em;
   border-radius: 40px;
 }
+.card-text-small-screen {
+  display: none;
+}
 .words-flex > *:nth-child(2) {
   border-left: 1px solid #f3f3f3;
   border-right: 1px solid #f3f3f3;
@@ -92,5 +106,79 @@
 .learn-more p {
   font-size: 18px;
   color: #b9ff66;
+}
+
+@media only screen and (max-width: 768px) {
+  .case-studies-wrapper {
+    max-width: 767px;
+  }
+  .content {
+    font-family: var(--font-family);
+    margin: auto;
+    padding: 3em;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    /* gap: 30px; */
+    /* padding: 4em 0; */
+    align-items: center;
+  }
+  /* .services-text h1 {
+    background-color: #b9ff66;
+    font-size: 40px;
+    font-weight: 400;
+    padding: 2px;
+    margin: 0;
+  }
+  .services-text p {
+    font-size: 18px;
+  } */
+  .words-flex {
+    display: none;
+  }
+  .card-text-small-screen {
+    display: block;
+    background-color: #191a23;
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 3em 2em;
+    border-radius: 40px;
+  }
+  .card-text-small-screen p {
+    color: #f3f3f3;
+    padding: 0 1em;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .content {
+    max-width: var(--max-content-width);
+    font-family: var(--font-family);
+    margin: auto;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .words-flex {
+    display: none;
+  }
+  .card-text-small-screen {
+    display: block;
+    background-color: #191a23;
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 3em 2em;
+    border-radius: 40px;
+  }
+  .card-text-small-screen p {
+    color: #f3f3f3;
+    padding: 0 1em;
+  }
 }
 </style>

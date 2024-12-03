@@ -3,7 +3,10 @@
     <div class="content">
       <div class="services-text">
         <h1>Contact Us</h1>
-        <p>Connect with us: Let's Discuss Your <br />Digital Marketing Needs</p>
+        <p>
+          Connect with us: Let's Discuss Your <br />
+          Digital Marketing Needs
+        </p>
       </div>
       <div class="contact-us-form">
         <form>
@@ -38,11 +41,14 @@
             <button>Send message</button>
           </div>
         </form>
-        <img src="../../assets/contact-form-img.svg" alt="contact us image" />
+      </div>
+      <div class="button-wrapper-small-screen">
+        <button>Send message</button>
       </div>
     </div>
   </div>
 </template>
+<!-- <img src="../../assets/contact-form-img.svg" alt="contact us image" /> -->
 
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -80,6 +86,9 @@ const email = ref('')
   gap: 24em;
   background-color: #f3f3f3;
   border-radius: 30px;
+}
+.button-wrapper-small-screen {
+  display: none;
 }
 .radio-buttons {
   display: flex;
@@ -140,6 +149,17 @@ const email = ref('')
   font-size: 16px;
   /* padding-top: 1em; */
 }
+.form-inputs input,
+.form-inputs textarea {
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+.form-inputs input::placeholder,
+.form-inputs textarea::placeholder {
+  color: #898989;
+  font-weight: 200;
+}
+
 .form-inputs textarea {
   height: 190px;
   width: 100%;
@@ -155,8 +175,12 @@ const email = ref('')
   font-size: 18px;
   /* font-weight: 100; */
 }
-form {
-  padding: 3em 0em 0em 5em;
+.contact-us-form {
+  padding: 60px 80px;
+  background-image: url('../../assets/contact-form-img.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: right;
 }
 button {
   border: 1px solid black;
@@ -168,8 +192,65 @@ button {
   color: white;
   font-family: var(--font-family);
 }
-.form-inputs input,
-textarea {
-  padding-left: 30px;
+@media only screen and (max-width: 768px) {
+  .content {
+    max-width: 767px;
+    font-family: var(--font-family);
+    margin: auto;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    /* gap: 30px; */
+    /* padding: 4em 0; */
+    /* align-items: center; */
+    justify-content: center;
+  }
+  .services-text p {
+    font-size: 18px;
+    justify-content: center;
+  }
+  .contact-us-form {
+    display: flex;
+    /* gap: 20em; */
+    background-color: #f3f3f3;
+    border-radius: 20px;
+  }
+  .contact-us-form img {
+    display: none;
+  }
+  .button-wrapper {
+    display: none;
+  }
+  .button-wrapper-small-screen {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+  }
+  button {
+    border-radius: 14px;
+    /* width: 130px; */
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .contact-us-form img {
+    display: none;
+  }
+  .content {
+    margin: auto;
+  }
+  .contact-us-form {
+    display: flex;
+    /* gap: 24em; */
+    background-color: #f3f3f3;
+    border-radius: 30px;
+  }
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
 }
 </style>
