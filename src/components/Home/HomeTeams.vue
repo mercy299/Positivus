@@ -196,7 +196,31 @@ button {
     padding: 2em 0;
   }
 }
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 810px) {
+  .services-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  .teams-flex {
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+    /* justify-content: center;  */
+    /* align-items: center; */
+  }
+  .teams-flex-item {
+    margin: auto;
+  }
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2em 0;
+  }
+}
+@media (min-width: 810px) and (max-width: 1200px) {
   .services-text {
     display: flex;
     flex-direction: column;

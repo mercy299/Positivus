@@ -144,7 +144,7 @@ button {
   text-decoration: underline;
 }
 
-@media (min-width: 300px) and (max-width: 768px) {
+@media (min-width: 300px) and (max-width: 849px) {
   .footer-container {
     background-color: #191a23;
     font-family: var(--font-family);
