@@ -33,9 +33,9 @@ defineProps({
 </script>
 
 <style scoped>
-.callout-wrapper {
+/* .callout-wrapper {
   width: v-bind(width);
-}
+} */
 .callout {
   position: relative;
   border-radius: 45px;
@@ -82,7 +82,7 @@ defineProps({
 }
 @media (min-width: 300px) and (max-width: 686px) {
   .callout {
-    width: 500px;
+    max-width: 100%;
   }
 }
 </style>

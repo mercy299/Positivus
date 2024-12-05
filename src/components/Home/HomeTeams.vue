@@ -136,12 +136,13 @@
 }
 .teams-flex-item {
   background-color: #f3f3f3;
-  padding: 2em;
+  padding: 30px;
   border-radius: 30px;
   box-shadow: 0px 4px #000000;
-  width: 330px;
-  height: 230px;
+  width: 100%;
+  /* height: 230px; */
   border: 1px solid #000000;
+  box-sizing: border-box;
 }
 .teams-flex-item-header {
   display: flex;

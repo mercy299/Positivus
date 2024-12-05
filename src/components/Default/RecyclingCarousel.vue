@@ -126,11 +126,20 @@ onMounted(() => {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-  background-color: #1c1c1c;
   border-radius: 10px;
   gap: 30px;
   width: 100%; /* Make sure container has a width */
   scrollbar-width: none; /* For Firefox: hide scrollbar */
+}
+
+@media (min-width: 300px) and (max-width: 686px) {
+  .carousel-container {
+    padding: 0px 30px;
+    box-sizing: border-box;
+  }
+  .carousel-item {
+    width: 100%;
+  }
 }
 
 .carousel-container::-webkit-scrollbar {
