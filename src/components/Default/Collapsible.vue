@@ -50,7 +50,7 @@ const toggleActive = () => {
 .collapsible-flex-item {
   background-color: #f3f3f3;
   padding: 1em 3em;
-  border-radius: 30px;
+  border-radius: 45px;
   box-shadow: 0px 4px #000000;
 }
 .collapsible-flex-item.active {

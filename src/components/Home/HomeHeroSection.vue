@@ -140,11 +140,11 @@ button a {
     display: flex;
     justify-content: center;
   }
-  .hero-image img {
+  /* .hero-image img {
     width: 400px;
     display: flex;
     justify-content: center;
-  }
+  } */
   /* .hero-image {
     display: none;
   }
@@ -162,7 +162,7 @@ button a {
 }
 @media only screen and (max-width: 913px) {
   .hero-image img {
-    width: 35 0px;
+    width: 300px;
     display: flex;
     justify-content: center;
   }

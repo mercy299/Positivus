@@ -9,7 +9,7 @@
         </p>
       </div>
       <div class="services-cards">
-        <div class="card">
+        <div class="card grey">
           <div class="card-text">
             <h2>Search engine <br />optimization</h2>
             <div class="learn-more">
@@ -19,8 +19,8 @@
           </div>
           <div class="card-img"><img src="../../assets/cards-1.svg" alt="Cards-1" /></div>
         </div>
-        <div class="card2">
-          <div class="card-text2">
+        <div class="card green">
+          <div class="card-text">
             <h2>Pay-per-click <br />advertising</h2>
             <div class="learn-more">
               <img src="../../assets/learn-more-icon.svg" alt="Learn More" />
@@ -29,8 +29,8 @@
           </div>
           <div class="card-img"><img src="../../assets/cards-2.svg" alt="Cards-2" /></div>
         </div>
-        <div class="card3">
-          <div class="card-text3">
+        <div class="card dark">
+          <div class="card-text">
             <h2>Social media <br />marketing</h2>
             <div class="learn-more3">
               <img src="../../assets/learn-more3-icon.svg" alt="Learn More" />
@@ -39,7 +39,7 @@
           </div>
           <div class="card-img"><img src="../../assets/cards-3.svg" alt="Cards-3" /></div>
         </div>
-        <div class="card4">
+        <div class="card grey">
           <div class="card-text">
             <h2>Email <br />Marketing</h2>
             <div class="learn-more">
@@ -49,8 +49,8 @@
           </div>
           <div class="card-img"><img src="../../assets/cards-4.svg" alt="Cards-4" /></div>
         </div>
-        <div class="card5">
-          <div class="card-text5">
+        <div class="card green">
+          <div class="card-text">
             <h2>Content <br />Creation</h2>
             <div class="learn-more">
               <img src="../../assets/learn-more-icon.svg" alt="Learn More" />
@@ -59,8 +59,8 @@
           </div>
           <div class="card-img"><img src="../../assets/cards-5.svg" alt="Cards-5" /></div>
         </div>
-        <div class="card6">
-          <div class="card-text6">
+        <div class="card dark-variant">
+          <div class="card-text">
             <h2>Analytics and <br />Tracking</h2>
             <div class="learn-more3">
               <img src="../../assets/learn-more3-icon.svg" alt="Learn More" />
@@ -110,69 +110,25 @@
 }
 .card {
   display: flex;
+  /* width: 550px; */
+  /* height: 300px; */
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 45px;
+  box-shadow: 0px 4px #000000;
+  box-sizing: border-box;
+}
+
+.card.grey {
   background-color: #f3f3f3;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
 }
-.card2 {
-  display: flex;
+.card.green {
   background-color: #b9ff66;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
 }
-.card3 {
-  display: flex;
+.card.dark,
+.card.dark-variant {
   background-color: #191a23;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
-}
-.card4 {
-  display: flex;
-  background-color: #f3f3f3;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
-}
-.card5 {
-  display: flex;
-  background-color: #b9ff66;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
-}
-.card6 {
-  display: flex;
-  background-color: #191a23;
-  width: 550px;
-  height: 300px;
-  justify-content: space-between;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 45px;
-  box-shadow: 0px 4px #000000;
 }
 .card-img {
   /* width: 210px; */
@@ -186,69 +142,17 @@
   justify-content: space-between;
   padding: 20px;
 }
-.card-text2 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
+.card.grey .card-text h2,
+.card.dark-variant .card-text h2 {
+  background-color: #b9ff66;
 }
-.card-text3 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
+.card.green .card-text h2,
+.card.dark .card-text h2 {
+  background-color: #f3f3f3;
 }
-.card-text4 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
-.card-text5 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
-.card-text6 {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
-}
+
 .card-text h2 {
   font-weight: 450;
-  background-color: #b9ff66;
-  font-size: 30px;
-  padding: 4px;
-}
-.card-text2 h2 {
-  font-weight: 450;
-  background-color: #f3f3f3;
-  font-size: 30px;
-  padding: 4px;
-}
-.card-text3 h2 {
-  font-weight: 450;
-  background-color: #f3f3f3;
-  font-size: 30px;
-  padding: 4px;
-}
-.card-text4 h2 {
-  font-weight: 450;
-  background-color: #b9ff66;
-  font-size: 30px;
-  padding: 4px;
-}
-.card-text5 h2 {
-  font-weight: 450;
-  background-color: #f3f3f3;
-  font-size: 30px;
-  padding: 4px;
-}
-.card-text6 h2 {
-  font-weight: 450;
-  background-color: #b9ff66;
   font-size: 30px;
   padding: 4px;
 }
@@ -275,12 +179,7 @@
     grid-template-columns: 1fr;
     width: 100%;
   }
-  .card,
-  .card3,
-  .card2,
-  .card4,
-  .card5,
-  .card6 {
+  .card {
     margin: auto; /* 1 column on mobile */
   }
   .services-text {
@@ -295,14 +194,9 @@
     grid-template-columns: 1fr;
     width: 100%;
   }
-  .card,
-  .card3,
-  .card2,
-  .card4,
-  .card5,
-  .card6 {
+  .card {
     margin: auto;
-    width: 300px;
+    width: 100%;
     height: 300px;
   }
   .card-img {

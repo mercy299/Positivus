@@ -236,6 +236,13 @@ button {
   }
 }
 @media (min-width: 768px) and (max-width: 980px) {
+  .footer-container {
+    padding: 5em 2em 0em 2em;
+  }
+  .footer {
+    max-width: 980px;
+    margin: auto;
+  }
   .footer-contact-form-container {
     display: flex;
     flex-direction: column;

@@ -49,7 +49,7 @@ button {
   color: white;
   font-family: var(--font-family);
 }
-@media (min-width: 400px) and (max-width: 880px) {
+@media (min-width: 300px) and (max-width: 1002px) {
   .content-img {
     display: none;
   }
