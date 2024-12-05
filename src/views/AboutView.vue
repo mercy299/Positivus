@@ -1,9 +1,11 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div>
+    <AboutHeroSection />
   </div>
 </template>
 
-<style>
+<script setup lang="ts">
+import AboutHeroSection from '@/components/About/AboutHeroSection.vue'
+</script>
 
-</style>
+<style scoped></style>

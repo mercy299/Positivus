@@ -1,7 +1,9 @@
 <template>
   <header class="navbar-container">
     <nav class="navbar">
-      <img src="../assets/White-logo.svg" alt="Positivus Logo" class="logo" />
+      <RouterLink to="/" class="logo-link">
+        <img src="../assets/White-logo.svg" alt="Positivus Logo" class="logo" />
+      </RouterLink>
       <div class="navbar-list-container">
         <ul class="navbar-list">
           <li><RouterLink to="/about"> About Us </RouterLink></li>
@@ -25,6 +27,18 @@
 .navbar {
   max-width: var(--max-content-width);
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center vertically */
+  padding: 30px 0;
+  font-family: var(--font-family);
+  font-weight: 200;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 nav {
@@ -43,8 +57,9 @@ nav {
   text-decoration: none;
   color: black;
 }
-nav img {
+.logo {
   width: 150px;
+  display: block;
 }
 ul {
   display: flex;
