@@ -43,14 +43,17 @@ pipeline {
 stage('SonarQube Scan') {
   steps {
     withSonarQubeEnv('sonarqube-server') {
-      script {
-        def scannerHome = tool 'sonarqube-scanner'  
-        sh """
-          set -eux
-          export PATH="${scannerHome}/bin:\$PATH"
-          sonar-scanner
-        """
-      }
+      sh '''
+        set -eux
+        docker run --rm \
+          -e SONAR_HOST_URL="$SONAR_HOST_URL" \
+          -e SONAR_LOGIN="$SONAR_AUTH_TOKEN" \
+          -v "$PWD:/usr/src" \
+          -w /usr/src \
+          sonarsource/sonar-scanner-cli:latest
+        # Confirm the file exists in the workspace
+        ls -l .scannerwork/report-task.txt
+      '''
     }
   }
 }
