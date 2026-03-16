@@ -44,7 +44,7 @@ stage('SonarQube Scan') {
   steps {
     withSonarQubeEnv('sonarqube-server') {
       script {
-        def scannerHome = tool 'sonar-scanner'  
+        def scannerHome = tool 'sonarqube-scanner'  
         sh """
           set -eux
           export PATH="${scannerHome}/bin:\$PATH"
