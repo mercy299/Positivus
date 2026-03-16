@@ -40,11 +40,24 @@ pipeline {
         '''
       }
     }
-
+    stage('SonarQube Scan') {
+    steps {
+        withSonarQubeEnv('sonarqube-server') {
+            sh """
+                sonar-scanner \
+                  -Dsonar.projectKey=positivus \
+                  -Dsonar.projectName=positivus \
+                  -Dsonar.sources=src \
+                  -Dsonar.host.url=$SONAR_HOST_URL \
+                  -Dsonar.login=$SONAR_AUTH_TOKEN
+            """
+        }
+    }
+}
     stage('Build Docker Image') {
       steps {
         script {
-          env.LOCAL_IMAGE = "positivus-frontend:${BUILD_NUMBER}"
+          env.LOCAL_IMAGE = "positivus:${BUILD_NUMBER}"
         }
 
         sh """
