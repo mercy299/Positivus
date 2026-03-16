@@ -42,6 +42,7 @@ pipeline {
           sh '''
             set -eux
             docker run --rm \
+              --network host \
               -e SONAR_HOST_URL="http://172.26.44.144:9000" \
               -e SONAR_TOKEN="$SONAR_TOKEN" \
               -e http_proxy="$HTTP_PROXY" \
