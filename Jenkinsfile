@@ -8,7 +8,6 @@ pipeline {
   }
 
   environment {
-    # Corporate Proxy
     HTTP_PROXY  = 'http://172.25.20.117:80'
     HTTPS_PROXY = 'http://172.25.20.117:80'
     NO_PROXY    = 'localhost,127.0.0.1'
