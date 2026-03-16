@@ -46,6 +46,7 @@ pipeline {
               -e SONAR_TOKEN="$SONAR_TOKEN" \
               -e http_proxy="$HTTP_PROXY" \
               -e https_proxy="$HTTPS_PROXY" \
+              -e no_proxy="localhost,127.0.0.1,172.26.44.144" \
               -v "$PWD:/usr/src" \
               -w /usr/src \
               sonarsource/sonar-scanner-cli:latest
