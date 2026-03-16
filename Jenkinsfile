@@ -41,22 +41,22 @@ pipeline {
       }
     }
     stage('SonarQube Scan') {
-  steps {
-    withSonarQubeEnv('sonarqube-server') {
-      sh '''
-        set -eux
-        docker run --rm \
-          -e SONAR_HOST_URL="$SONAR_HOST_URL" \
-          -e SONAR_TOKEN="$SONAR_AUTH_TOKEN" \
-          -e http_proxy="$HTTP_PROXY" \
-          -e https_proxy="$HTTPS_PROXY" \
-          -e no_proxy="$NO_PROXY" \
-          -v "$PWD:/usr/src" \
-          -w /usr/src \
-          sonarsource/sonar-scanner-cli:latest
-      '''
+  stage('SonarQube Scan') {
+    steps {
+        // 'sonarqube-token-id' is the ID of your 'Secret Text' credential in Jenkins
+        withCredentials([string(credentialsId: 'sonarqube-token-id', variable: 'MY_SONAR_TOKEN')]) {
+            sh '''
+                docker run --rm \
+                  -e SONAR_HOST_URL="http://172.26.44.144:9000" \
+                  -e SONAR_TOKEN="$SONAR_AUTH_TOKEN" \
+                  -e http_proxy="$HTTP_PROXY" \
+                  -e https_proxy="$HTTPS_PROXY" \
+                  -v "$PWD:/usr/src" \
+                  -w /usr/src \
+                  sonarsource/sonar-scanner-cli:latest
+            '''
+        }
     }
-  }
 }
     stage('Build Docker Image') {
       steps {
