@@ -40,17 +40,12 @@ pipeline {
         '''
       }
     }
-stage('SonarQube Scan') {
+    stage('SonarQube Scan') {
   steps {
-    withSonarQubeEnv('sonarqube-server') {  
+    withSonarQubeEnv('sonarqube-server') {
       sh '''
         set -eux
-
-        echo "SONAR_HOST_URL=$SONAR_HOST_URL"
-        echo "Workspace: $PWD"
-
-
-                docker run --rm \
+        docker run --rm \
           -e SONAR_HOST_URL="$SONAR_HOST_URL" \
           -e SONAR_LOGIN="$SONAR_AUTH_TOKEN" \
           -e http_proxy="$HTTP_PROXY" \
@@ -59,8 +54,6 @@ stage('SonarQube Scan') {
           -v "$PWD:/usr/src" \
           -w /usr/src \
           sonarsource/sonar-scanner-cli:latest
-
-        ls -l .scannerwork/report-task.txt
       '''
     }
   }
