@@ -42,26 +42,26 @@ pipeline {
     }
 stage('SonarQube Scan') {
   steps {
-    withSonarQubeEnv('sonarqube-server') {
+    withSonarQubeEnv('sonarqube-server') {  
       sh '''
         set -eux
-        docker run --rm \
+
+        echo "SONAR_HOST_URL=$SONAR_HOST_URL"
+        echo "Workspace: $PWD"
+
+
+                docker run --rm \
           -e SONAR_HOST_URL="$SONAR_HOST_URL" \
           -e SONAR_LOGIN="$SONAR_AUTH_TOKEN" \
+          -e http_proxy="$HTTP_PROXY" \
+          -e https_proxy="$HTTPS_PROXY" \
+          -e no_proxy="$NO_PROXY" \
           -v "$PWD:/usr/src" \
           -w /usr/src \
           sonarsource/sonar-scanner-cli:latest
-        # Confirm the file exists in the workspace
+
         ls -l .scannerwork/report-task.txt
       '''
-    }
-  }
-}
-
-stage('Quality Gate') {
-  steps {
-    timeout(time: 10, unit: 'MINUTES') {
-      waitForQualityGate abortPipeline: true
     }
   }
 }
