@@ -40,12 +40,27 @@ pipeline {
         '''
       }
     }
-    stage('SonarQube Scan') {
-    steps {
-        withSonarQubeEnv('sonarqube-server') {
-            sh 'sonar-scanner'
-        }
+stage('SonarQube Scan') {
+  steps {
+    withSonarQubeEnv('sonarqube-server') {
+      script {
+        def scannerHome = tool 'sonar-scanner'  
+        sh """
+          set -eux
+          export PATH="${scannerHome}/bin:\$PATH"
+          sonar-scanner
+        """
+      }
     }
+  }
+}
+
+stage('Quality Gate') {
+  steps {
+    timeout(time: 10, unit: 'MINUTES') {
+      waitForQualityGate abortPipeline: true
+    }
+  }
 }
     stage('Build Docker Image') {
       steps {
