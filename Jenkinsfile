@@ -10,22 +10,17 @@ pipeline {
     HTTP_PROXY  = 'http://172.25.20.117:80'
     HTTPS_PROXY = 'http://172.25.20.117:80'
     NO_PROXY    = 'localhost,127.0.0.1'
-
     GHCR_REPOSITORY = "ghcr.io/mercy299/positivus"
   }
 
   stages {
-
     stage('Checkout') {
       steps {
         checkout scm
-
-        // store short SHA for tagging
         sh 'git rev-parse --short HEAD > .git/shortsha'
         script {
           env.GIT_SHORT_SHA = readFile('.git/shortsha').trim()
         }
-
         echo "Commit: ${env.GIT_SHORT_SHA}"
       }
     }
@@ -40,30 +35,30 @@ pipeline {
         '''
       }
     }
-      stage('SonarQube Scan') {
-    steps {
-        // 'sonarqube-token-id' is the ID of your 'Secret Text' credential in Jenkins
-        withCredentials([string(credentialsId: 'sonarqube-token-id', variable: 'MY_SONAR_TOKEN')]) {
-            sh '''
-                docker run --rm \
-                  -e SONAR_HOST_URL="http://172.26.44.144:9000" \
-                  -e SONAR_TOKEN="$SONAR_AUTH_TOKEN" \
-                  -e http_proxy="$HTTP_PROXY" \
-                  -e https_proxy="$HTTPS_PROXY" \
-                  -v "$PWD:/usr/src" \
-                  -w /usr/src \
-                  sonarsource/sonar-scanner-cli:latest
-            '''
+
+    stage('SonarQube Scan') {
+      steps {
+        withCredentials([string(credentialsId: 'sonarqube-token-id', variable: 'SONAR_TOKEN')]) {
+          sh '''
+            set -eux
+            docker run --rm \
+              -e SONAR_HOST_URL="http://172.26.44.144:9000" \
+              -e SONAR_TOKEN="$SONAR_TOKEN" \
+              -e http_proxy="$HTTP_PROXY" \
+              -e https_proxy="$HTTPS_PROXY" \
+              -v "$PWD:/usr/src" \
+              -w /usr/src \
+              sonarsource/sonar-scanner-cli:latest
+          '''
         }
+      }
     }
-}
 
     stage('Build Docker Image') {
       steps {
         script {
           env.LOCAL_IMAGE = "positivus:${BUILD_NUMBER}"
         }
-
         sh """
           set -eux
           docker build \\
@@ -82,14 +77,10 @@ pipeline {
         sh """
           set -eux
           TEST_PORT=8088
-
           CID=\$(docker run -d -p \${TEST_PORT}:80 ${LOCAL_IMAGE})
           sleep 3
-
           curl -fsS http://localhost:\${TEST_PORT}/ >/dev/null
-
           echo "Smoke test passed"
-
           docker rm -f "\$CID" >/dev/null 2>&1 || true
         """
       }
@@ -99,13 +90,11 @@ pipeline {
       steps {
         script {
           withCredentials([usernamePassword(
-            credentialsId: 'GHCR_CREDENTIALS',   // MUST MATCH Jenkins Credential ID
+            credentialsId: 'GHCR_CREDENTIALS',
             usernameVariable: 'GHCR_USER',
             passwordVariable: 'GHCR_TOKEN'
           )]) {
-            sh """
-              echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GHCR_USER" --password-stdin
-            """
+            sh "echo '$GHCR_TOKEN' | docker login ghcr.io -u '$GHCR_USER' --password-stdin"
           }
         }
       }
@@ -117,18 +106,12 @@ pipeline {
           env.GHCR_TAG_BUILD = "${GHCR_REPOSITORY}:${BUILD_NUMBER}"
           env.GHCR_TAG_SHA   = "${GHCR_REPOSITORY}:${GIT_SHORT_SHA}"
         }
-
         sh """
           set -eux
           docker tag ${LOCAL_IMAGE} ${GHCR_TAG_BUILD}
           docker tag ${LOCAL_IMAGE} ${GHCR_TAG_SHA}
-
           docker push ${GHCR_TAG_BUILD}
           docker push ${GHCR_TAG_SHA}
-
-          echo "Pushed:"
-          echo " - ${GHCR_TAG_BUILD}"
-          echo " - ${GHCR_TAG_SHA}"
         """
       }
     }
@@ -136,9 +119,7 @@ pipeline {
 
   post {
     success {
-      echo "SUCCESS: Image pushed to GHCR:"
-      echo " → ${GHCR_REPOSITORY}:${BUILD_NUMBER}"
-      echo " → ${GHCR_REPOSITORY}:${GIT_SHORT_SHA}"
+      echo "SUCCESS: Image pushed to GHCR"
     }
     failure {
       echo "FAILURE: Pipeline failed"
