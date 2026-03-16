@@ -40,8 +40,7 @@ pipeline {
         '''
       }
     }
-    stage('SonarQube Scan') {
-  stage('SonarQube Scan') {
+      stage('SonarQube Scan') {
     steps {
         // 'sonarqube-token-id' is the ID of your 'Secret Text' credential in Jenkins
         withCredentials([string(credentialsId: 'sonarqube-token-id', variable: 'MY_SONAR_TOKEN')]) {
@@ -58,6 +57,7 @@ pipeline {
         }
     }
 }
+
     stage('Build Docker Image') {
       steps {
         script {
