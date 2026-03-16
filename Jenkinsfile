@@ -11,7 +11,7 @@ pipeline {
     HTTPS_PROXY = 'http://172.25.20.117:80'
     NO_PROXY    = 'localhost,127.0.0.1'
 
-    GHCR_REPOSITORY = "ghcr.io/mercy299/Positivus"
+    GHCR_REPOSITORY = "ghcr.io/mercy299/positivus"
   }
 
   stages {
