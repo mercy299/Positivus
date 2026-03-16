@@ -40,17 +40,10 @@ pipeline {
         '''
       }
     }
-    stage('SonarQube Scan') {
+    sstage('SonarQube Scan') {
     steps {
         withSonarQubeEnv('sonarqube-server') {
-            sh """
-                sonar-scanner \
-                  -Dsonar.projectKey=positivus \
-                  -Dsonar.projectName=positivus \
-                  -Dsonar.sources=src \
-                  -Dsonar.host.url=$SONAR_HOST_URL \
-                  -Dsonar.login=$SONAR_AUTH_TOKEN
-            """
+            sh 'sonar-scanner'
         }
     }
 }
