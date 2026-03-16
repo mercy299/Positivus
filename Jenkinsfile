@@ -47,7 +47,7 @@ pipeline {
         set -eux
         docker run --rm \
           -e SONAR_HOST_URL="$SONAR_HOST_URL" \
-          -e SONAR_LOGIN="$SONAR_AUTH_TOKEN" \
+          -e SONAR_TOKEN="$SONAR_AUTH_TOKEN" \
           -e http_proxy="$HTTP_PROXY" \
           -e https_proxy="$HTTPS_PROXY" \
           -e no_proxy="$NO_PROXY" \
