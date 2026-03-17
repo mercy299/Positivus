@@ -4,6 +4,8 @@ pipeline {
   options {
     timestamps()
     timeout(time: 30, unit: 'MINUTES')
+    buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
+
   }
 
   environment {
@@ -11,6 +13,10 @@ pipeline {
     HTTPS_PROXY = 'http://172.25.20.117:80'
     NO_PROXY    = 'localhost,127.0.0.1'
     GHCR_REPOSITORY = "ghcr.io/mercy299/positivus"
+    SONAR_OPTS = "-e SONAR_SCANNER_OPTS='-Xmx3072m' -Dsonar.javascript.node.maxspace=3072"
+    PROXY_OPTS = "--build-arg HTTP_PROXY=http://172.25.20.117:80 --build-arg HTTPS_PROXY=http://172.25.20.117:80"
+
+
   }
 
   stages {
@@ -48,7 +54,6 @@ pipeline {
               -e http_proxy="$HTTP_PROXY" \
               -e https_proxy="$HTTPS_PROXY" \
               -e no_proxy="localhost,127.0.0.1,172.26.44.144" \
-              -e SONAR_SCANNER_OPTS="-Xmx4096m" \
               -v "$PWD:/usr/src" \
               -w /usr/src \
               sonarsource/sonar-scanner-cli:latest \
@@ -59,24 +64,12 @@ pipeline {
       }
     }
 
-    stage('Build Docker Image') {
+    stage('Build & Test') {
       steps {
-        script {
-          env.LOCAL_IMAGE = "positivus:${BUILD_NUMBER}"
-        }
-        sh """
-          set -eux
-          docker build \\
-            --pull \\
-            --build-arg HTTP_PROXY=$HTTP_PROXY \\
-            --build-arg HTTPS_PROXY=$HTTPS_PROXY \\
-            --build-arg NO_PROXY=$NO_PROXY \\
-            --label org.opencontainers.image.revision=${GIT_SHORT_SHA} \\
-            -t ${LOCAL_IMAGE} .
-        """
+        sh "docker build --pull ${PROXY_OPTS} -t ${LOCAL_IMAGE} ."
+        sh "docker run --rm -p 8088:80 ${LOCAL_IMAGE} curl -f http://localhost:8088/"
       }
     }
-
     stage('Smoke Test') {
       steps {
         sh """
@@ -91,37 +84,20 @@ pipeline {
       }
     }
 
-    stage('Login to GHCR') {
+  stage('Push to GHCR') {
       steps {
-        script {
-          withCredentials([usernamePassword(
-            credentialsId: 'GHCR_CREDENTIALS',
-            usernameVariable: 'GHCR_USER',
-            passwordVariable: 'GHCR_TOKEN'
-          )]) {
-            sh "echo '$GHCR_TOKEN' | docker login ghcr.io -u '$GHCR_USER' --password-stdin"
-          }
+        withCredentials([usernamePassword(credentialsId: 'GHCR_CREDENTIALS', usernameVariable: 'U', passwordVariable: 'P')]) {
+          sh "echo '$P' | docker login ghcr.io -u '$U' --password-stdin"
+          sh """
+            docker tag ${LOCAL_IMAGE} ${GHCR_REPO}:${BUILD_NUMBER}
+            docker tag ${LOCAL_IMAGE} ${GHCR_REPO}:${GIT_SHORT_SHA}
+            docker push ${GHCR_REPO}:${BUILD_NUMBER}
+            docker push ${GHCR_REPO}:${GIT_SHORT_SHA}
+          """
         }
-      }
-    }
-
-    stage('Tag & Push Image') {
-      steps {
-        script {
-          env.GHCR_TAG_BUILD = "${GHCR_REPOSITORY}:${BUILD_NUMBER}"
-          env.GHCR_TAG_SHA   = "${GHCR_REPOSITORY}:${GIT_SHORT_SHA}"
-        }
-        sh """
-          set -eux
-          docker tag ${LOCAL_IMAGE} ${GHCR_TAG_BUILD}
-          docker tag ${LOCAL_IMAGE} ${GHCR_TAG_SHA}
-          docker push ${GHCR_TAG_BUILD}
-          docker push ${GHCR_TAG_SHA}
-        """
       }
     }
   }
-
   post {
     success {
       echo "SUCCESS: Image pushed to GHCR"
@@ -130,7 +106,7 @@ pipeline {
       echo "FAILURE: Pipeline failed"
     }
     always {
-      sh 'docker system prune -f || true'
+      sh 'docker system prune -af || true'
     }
   }
 }
