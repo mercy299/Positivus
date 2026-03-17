@@ -52,7 +52,7 @@ pipeline {
               -v "$PWD:/usr/src" \
               -w /usr/src \
               sonarsource/sonar-scanner-cli:latest \
-              -Dsonar.javascript.node.maxspace=4096 \
+              -Dsonar.javascript.node.maxspace=3072 \
               -Dsonar.exclusions="**/node_modules/**,**/dist/**,**/build/**"
           '''
         }
