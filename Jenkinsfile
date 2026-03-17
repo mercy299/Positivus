@@ -13,8 +13,9 @@ pipeline {
     HTTPS_PROXY = 'http://172.25.20.117:80'
     NO_PROXY    = 'localhost,127.0.0.1'
     GHCR_REPOSITORY = "ghcr.io/mercy299/positivus"
-    SONAR_OPTS = "-e SONAR_SCANNER_OPTS='-Xmx3072m' -Dsonar.javascript.node.maxspace=3072"
+    SONAR_OPTS = "-e SONAR_SCANNER_OPTS='-Xmx512m' -Dsonar.javascript.node.maxspace=3072"
     PROXY_OPTS = "--build-arg HTTP_PROXY=http://172.25.20.117:80 --build-arg HTTPS_PROXY=http://172.25.20.117:80"
+    NODE_OPTIONS = "--max-old-space-size=1536"
 
 
   }
@@ -45,6 +46,7 @@ pipeline {
     stage('SonarQube Scan') {
       steps {
         withCredentials([string(credentialsId: 'sonarqube-token-id', variable: 'SONAR_TOKEN')]) {
+          sh "rm -rf node_modules" 
           sh '''
             set -eux
             docker run --rm \
