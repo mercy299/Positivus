@@ -3,6 +3,8 @@
 # -----------------------------
 FROM node:20-alpine AS builder
 
+RUN apk update && apk upgrade --no-cache
+
 WORKDIR /app
 
 # Install dependencies
@@ -24,6 +26,8 @@ RUN npm run build
 # Stage 2: Run with Nginx
 # -----------------------------
 FROM nginx:alpine AS runner
+
+RUN apk update && apk upgrade --no-cache
 
 # Remove default config and add an SPA-friendly one
 RUN rm -f /etc/nginx/conf.d/default.conf
