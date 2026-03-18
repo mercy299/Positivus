@@ -88,10 +88,10 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'GHCR_CREDENTIALS', usernameVariable: 'U', passwordVariable: 'P')]) {
           sh "echo '$P' | docker login ghcr.io -u '$U' --password-stdin"
           sh """
-            docker tag ${LOCAL_IMAGE} ${GHCR_REPO}:${BUILD_NUMBER}
-            docker tag ${LOCAL_IMAGE} ${GHCR_REPO}:${GIT_SHORT_SHA}
-            docker push ${GHCR_REPO}:${BUILD_NUMBER}
-            docker push ${GHCR_REPO}:${GIT_SHORT_SHA}
+            docker tag ${LOCAL_IMAGE} ${GHCR_CREDENTIALS}:${BUILD_NUMBER}
+            docker tag ${LOCAL_IMAGE} ${GHCR_CREDENTIALS}:${GIT_SHORT_SHA}
+            docker push ${GHCR_CREDENTIALS}:${BUILD_NUMBER}
+            docker push ${GHCR_CREDENTIALS}:${GIT_SHORT_SHA}
           """
         }
       }
