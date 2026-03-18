@@ -53,11 +53,19 @@ pipeline {
       }
     }
 
-    stage('Build & Test') {
+   stage('Build & Test') {
       steps {
-        // Removed PROXY_OPTS
         sh "docker build --pull -t ${LOCAL_IMAGE} ."
-        sh "docker run --rm -p 8088:80 ${LOCAL_IMAGE} curl -f http://localhost:8088/"
+        script {
+            // Start container in background
+            sh "docker run -d --name test-bench -p 8088:80 ${LOCAL_IMAGE}"
+            // Wait a second for Nginx/App to boot
+            sleep 3
+            // Curl from the HOST (Jenkins Agent)
+            sh "curl -f http://localhost:8088/"
+            // Clean up
+            sh "docker rm -f test-bench"
+        }
       }
     }
 
