@@ -10,7 +10,7 @@ pipeline {
   environment {
     GHCR_CREDENTIALS = "ghcr.io/mercy299/positivus"
     LOCAL_IMAGE     = "positivus-local"
-    SONAR_URL       = "http://172.26.44.144:9000"
+    SONAR_URL       = "http://localhost:9000"
     NODE_OPTIONS    = "--max-old-space-size=1536"
   }
 
