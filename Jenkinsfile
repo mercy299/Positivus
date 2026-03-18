@@ -83,6 +83,19 @@ pipeline {
       }
     }
 
+    stage('Trivy Image Scan') {
+      steps {
+        sh """
+          docker run --rm \
+            -v /var/run/docker.sock:/var/run/docker.sock \
+            -v ${HOME}/.cache:/root/.cache \
+            aquasec/trivy:latest \
+            image --severity HIGH,CRITICAL --exit-code 1 ${LOCAL_IMAGE}
+        """
+      }
+    }
+
+
     stage('Push to GHCR') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'GHCR_CREDENTIALS', usernameVariable: 'U', passwordVariable: 'P')]) {
